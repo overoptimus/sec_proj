@@ -23,12 +23,11 @@ def run():
         url_ip = url + ip
         for port in ports:
             url_ip_port = url_ip + str(port)
-            response = requests.get(url_ip_port， timeout=1)
+            response = requests.get(url_ip_port, timeout=1)
             # 判断是否能够通过ssrf判断内网存活主机
             # 目前不知道返回的是什么样子，所以通过判断状态是否为200进行模拟，具体情况具体分析
             # if response.status_code == 200:
             #     print(ip, ':', port, 'is open')
-            #
             # 或者直接通过判断是否有回显判断
             if len(response.text.encode('utf-8')) > 0:
                 print(ip, ':', port, 'is open')
